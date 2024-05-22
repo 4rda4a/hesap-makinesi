@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>ARDA ANIL - Hesap Makinesi</title>
+    <title>Hesap Makinesi</title>
 </head>
 
 <body>
@@ -33,31 +33,42 @@
             <span id="equal">=</span>
         </div>
     </div>
-    <div class="instagram">
-        <a href="https://instagram.com/4rda4a" target="_blank">
-            Instagram
-        </a>
-    </div>
     <script>
+        // "buttons" sınıfına sahip elementi seçiyoruz ve "buttons" değişkenine atıyoruz
         let buttons = document.querySelector('.buttons');
+
+        // Tüm "span" etiketlerini seçiyoruz ve "btn" adlı NodeList değişkenine atıyoruz
         let btn = document.querySelectorAll('span');
+
+        // "value" id'sine sahip elementi seçiyoruz ve "value" değişkenine atıyoruz
         let value = document.getElementById('value');
+
+        // "toggleBtn" sınıfına sahip elementi seçiyoruz ve "toggleBtn" değişkenine atıyoruz
         let toggleBtn = document.querySelector(".toggleBtn");
+
+        // "body" etiketini seçiyoruz ve "body" değişkenine atıyoruz
         let body = document.querySelector('body');
+
+        // Tüm "span" etiketlerine (butonlara) click event listener ekliyoruz
         for (let i = 0; i < btn.length; i++) {
             btn[i].addEventListener("click", function () {
+                // Eğer butonun içeriği "=" ise, eval fonksiyonuyla değeri hesaplıyoruz
                 if (this.innerHTML == "=") {
                     value.innerHTML = eval(value.innerHTML);
                 } else {
+                    // Eğer butonun içeriği "Temizle" ise, değeri temizliyoruz
                     if (this.innerHTML == "Temizle") {
                         value.innerHTML = "";
                     }
+                    // Aksi halde, butonun içeriğini mevcut değere ekliyoruz
                     else {
                         value.innerHTML += this.innerHTML;
                     }
                 }
             })
         }
+
+        // "toggleBtn" butonuna tıklandığında, body elementine "dark" sınıfını ekleyip çıkartıyoruz
         toggleBtn.onclick = function () {
             body.classList.toggle('dark')
         }
